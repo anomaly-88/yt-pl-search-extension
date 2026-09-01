@@ -1,0 +1,137 @@
+.yt-search-hidden {
+  display: none !important;
+}
+
+.yt-playlist-enhanced-sheet {
+  min-height: 480px !important;
+  max-height: 85vh !important;
+}
+
+.yt-playlist-enhanced-sheet .ytContextualSheetLayoutContentContainer {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 380px !important;
+  max-height: 75vh !important;
+  flex: 1 !important;
+}
+
+/* Arama + sayaç + sıralama */
+.yt-playlist-search-bar {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  padding: 8px 16px 12px !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  flex-shrink: 0 !important;
+background:#2a2d2e !important;
+}
+
+.yt-playlist-search-input-wrap {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+}
+
+.yt-playlist-search-input {
+  width: 100% !important;
+  min-width: 0 !important;
+  padding: 8px 34px 8px 12px !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--yt-spec-10-percent-layer, rgba(215, 166, 247, 0.5)) !important;
+  background-color: var(--yt-spec-badge-chip-background, rgba(255, 255, 255, 0.08)) !important;
+  color: var(--yt-spec-text-primary,#edfbff) !important;
+  font: inherit !important;
+  font-size: 14px !important;
+  outline: none !important;
+  box-sizing: border-box !important;
+}
+
+.yt-playlist-search-input::-webkit-search-cancel-button {
+  display: none !important;
+}
+
+.yt-playlist-search-input:focus {
+  border-color: var(--yt-spec-call-to-action, #3ea6ff) !important;
+}
+
+.yt-playlist-search-input::placeholder {
+  color: var(--yt-spec-text-secondary, rgba(255, 255, 255, 0.7)) !important;
+}
+
+.yt-playlist-search-clear {
+  position: absolute !important;
+  right: 5px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 26px !important;
+  height: 26px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  color: var(--yt-spec-text-secondary, rgba(255, 255, 255, 0.75)) !important;
+  font-size: 20px !important;
+  line-height: 24px !important;
+  cursor: pointer !important;
+}
+
+.yt-playlist-search-clear:hover {
+  background: var(--yt-spec-10-percent-layer, rgba(255, 255, 255, 0.12)) !important;
+  color: var(--yt-spec-text-primary, #fff) !important;
+}
+
+.yt-playlist-search-count {
+  flex: 0 0 auto !important;
+  min-width: 28px !important;
+  text-align: right !important;
+  color: var(--yt-spec-text-secondary, rgba(255, 255, 255, 0.7)) !important;
+  font-size: 12px !important;
+  user-select: none !important;
+}
+
+.yt-playlist-sort-btn {
+  flex: 0 0 auto !important;
+  padding: 8px 12px !important;
+  border-radius: 8px !important;
+  border: 1px solid var(--yt-spec-10-percent-layer, rgba(255, 255, 255, 0.2)) !important;
+  background-color: var(--yt-spec-badge-chip-background, rgba(255, 255, 255, 0.08)) !important;
+  color: var(--yt-spec-text-primary, #fff) !important;
+  font: inherit !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  white-space: nowrap !important;
+  user-select: none !important;
+}
+
+.yt-playlist-sort-btn:hover {
+  background-color: var(--yt-spec-10-percent-layer, rgba(255, 255, 255, 0.2)) !important;
+  border-color: var(--yt-spec-call-to-action, #3ea6ff) !important;
+}
+
+.yt-playlist-list-enhanced {
+  min-height: 260px !important;
+  max-height: 60vh !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain !important;
+}
+
+@media (max-width: 520px) {
+  .yt-playlist-search-bar {
+    gap: 6px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  .yt-playlist-search-count {
+    display: none !important;
+  }
+
+  .yt-playlist-sort-btn {
+    padding-left: 9px !important;
+    padding-right: 9px !important;
+  }
+}

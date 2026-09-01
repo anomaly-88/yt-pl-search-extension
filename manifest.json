@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Oynatma Listesi Arama & Sıralama",
+  "version": "2.2",
+  "description": "YouTube, YouTube Music ve mobilde oynatma listesi canlı arama, sonuç sayacı ve A-Z/Z-A/orijinal sıraya göre sıralama.",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.youtube.com/*",
+        "https://music.youtube.com/*",
+        "https://m.youtube.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "styles.css"
+      ],
+      "run_at": "document_end"
+    }
+  ]
+}
