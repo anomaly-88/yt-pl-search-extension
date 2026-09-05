@@ -1,3 +1,4 @@
+# EN:
 # YouTube Playlist Search
 
 A lightweight browser extension that adds **search, sorting, and playlist filtering controls** to YouTube and YouTube Music playlist selection dialogs.
@@ -21,7 +22,7 @@ It is especially useful for users who have a large number of playlists and want 
   - `Playlist 2` comes before `Playlist 10`
 - Search reset button
 - Turkish character tolerant search
-  - `Çanakkale` can match `Çanakkale`
+  - `Canakkale` can match `Çanakkale`
 - Automatically detects dynamically loaded playlists
 - Works with YouTube's SPA-style navigation
 - Supports playlist dialogs loaded after the page itself
@@ -232,6 +233,256 @@ If YouTube changes its playlist dialog structure, please include:
 This project is an independent browser extension and is not affiliated with, endorsed by, or sponsored by YouTube or Google.
 
 YouTube and YouTube Music are trademarks of Google LLC.
+
+
+# TR:
+# YouTube Çalma Listesi Arama
+
+YouTube ve YouTube Music çalma listesi seçim iletişim kutularına **arama, sıralama ve çalma listesi filtreleme kontrolleri** ekleyen hafif bir tarayıcı uzantısı.
+
+Özellikle çok sayıda çalma listesine sahip olan ve tüm listeyi manuel olarak kaydırmadan doğru olanı hızlıca bulmak isteyen kullanıcılar için kullanışlıdır.
+
+## Özellikler
+
+- Çalma listesi seçim iletişim kutusunun içinde doğrudan çalma listesi araması yapın
+- Şunları destekler:
+
+- YouTube
+
+- YouTube Müzik
+- Yazarken anında filtreleme
+- Sonuç sayacı
+
+- Örnek: `4 / 35`
+- Çalma listesi sıralaması:
+
+- A → Z
+
+- Z → A
+
+- Orijinal sıra
+- Sayısal karakter duyarlı sıralama
+
+- `Çalma Listesi 2`, `Çalma Listesi 10`'dan önce gelir
+- Arama sıfırlama düğmesi
+- Türkçe karakterlere duyarlı arama
+
+- `Çanakkale`, `Çanakkale` ile eşleşebilir
+- Dinamik olarak yüklenen çalma listelerini otomatik olarak algılar
+- YouTube'un SPA tarzı navigasyonuyla çalışır
+- Sayfanın kendisinden sonra yüklenen çalma listesi iletişim kutularını destekler
+- Gereksiz sorgulamayı önlemek için hafif DOM gözlemi
+- YouTube'un karanlık arayüzüyle çalışacak şekilde tasarlanmıştır
+
+## Desteklenen Web Siteleri
+
+| Platform | Desteklenen |
+
+|---|---|
+
+| YouTube | ✅ |
+
+| YouTube Müzik | ✅ |
+
+## Kurulum
+
+### Chrome / Chromium tabanlı tarayıcılar
+
+1. Bu depoyu indirin veya klonlayın.
+
+```bash
+git clone https://github.com/anomaly-88/yt-pl-search-extension.git
+```
+
+2. Açın:
+
+```text
+chrome://extensions
+```
+
+3. **Geliştirici modunu** etkinleştirin.
+
+4. **Paketlenmemiş olanı yükle** seçeneğine tıklayın.
+
+5. `manifest.json` dosyasını içeren uzantı dizinini seçin.
+
+Uzantı, desteklenen YouTube sayfalarında otomatik olarak etkinleşecektir.
+
+## Kullanım
+
+YouTube'un oynatma listesine içerik eklemeye izin verdiği herhangi bir video veya sayfayı açın.
+
+Tıklayın:
+
+**Kaydet → Oynatma Listesi**
+
+Uzantı, oynatma listesi listesinin üstüne bir araç çubuğu ekler.
+
+Ardından şunları yapabilirsiniz:
+
+- Listeyi filtrelemek için bir çalma listesi adı yazın,
+- Mevcut aramaya uyan kaç çalma listesi olduğunu görün,
+- Çalma listesi sıralamasını değiştirin,
+- Mevcut aramayı anında temizleyin.
+
+Aynı işlevsellik YouTube Music çalma listesi iletişim kutularında da mevcuttur.
+
+## Sıralama
+
+Sıralama düğmesine tıklayarak şunlar arasında geçiş yapabilirsiniz:
+
+```metin
+A → Z
+↓
+Z → A
+↓
+Orijinal Sıralama
+```
+
+Orijinal çalma listesi sıralaması dahili olarak korunur, böylece her zaman YouTube'un varsayılan sıralamasını geri yükleyebilirsiniz.
+
+## Arama Davranışı
+
+Arama:
+
+- büyük/küçük harf duyarsızdır,
+- boşluklara toleranslıdır,
+- aksan işaretlerine toleranslıdır.
+
+Örneğin:
+
+```metin
+cagri
+```
+şuna eşleşebilir:
+
+```metin
+Çağrı
+```
+
+Bu, aksanlı veya yerelleştirilmiş karakterler içeren çalma listesi adlarında aramayı da kolaylaştırır.
+
+## Nasıl Çalışır
+
+Bu eklenti, YouTube'un oynatma listesi seçim arayüzüne küçük bir araç çubuğu ekler.
+
+Hem YouTube renderer ailelerini destekler:
+
+```metin
+ytd-*
+```
+
+hem de YouTube Music renderer ailelerini:
+
+```metin
+ytmusic-*
+```
+
+Sayfadaki ilk modal pencerenin oynatma listesi iletişim kutusu olduğunu varsaymak yerine, eklenti aslında oynatma listesi öğeleri içeren şu anda görünür olan iletişim kutusunu algılar.
+
+Bu, YouTube arayüzü değişikliklerine ve dinamik olarak oluşturulan iletişim kutularına karşı daha dayanıklı olmasını sağlar.
+
+Bir `MutationObserver`, şunları algılamak için kullanılır:
+
+- yeni açılan oynatma listesi iletişim kutuları,
+- dinamik olarak yüklenen oynatma listeleri,
+- SPA gezinme değişiklikleri.
+
+Gereksiz CPU kullanımını azaltmak için DOM taramaları sınırlı tutulur.
+
+## Proje Yapısı
+
+```metin
+.
+
+├── manifest.json
+├── content.js
+├── styles.css
+└── README.md
+```
+
+Projenin sürümüne bağlı olarak dosya adları biraz farklılık gösterebilir.
+
+## İzinler
+
+Bu eklenti, yalnızca desteklenen YouTube sayfalarına oynatma listesi arama arayüzünü eklemek için gerekli izinleri gerektirir.
+
+Şunlara erişim gerektirmez:
+
+- Google hesabınızın kimlik bilgileri,
+- YouTube API aracılığıyla oynatma listesi verileriniz,
+- harici sunucular.
+
+Oynatma listesi filtreleme, YouTube tarafından zaten oluşturulmuş DOM kullanılarak tarayıcıda yerel olarak gerçekleştirilir.
+
+## Gizlilik
+
+Bu eklenti kişisel verileri toplamaz, saklamaz, iletmez veya analiz etmez.
+
+Oynatma listesi araması için harici analiz, izleme hizmetleri veya uzaktan API'ler gerekmez.
+
+Tüm filtreleme ve sıralama işlemleri tarayıcınızda yerel olarak gerçekleşir.
+
+## Uyumluluk
+
+Öncelikle şu Chromium tabanlı tarayıcılar için tasarlanmıştır:
+
+- Google Chrome
+- Microsoft Edge
+- Brave
+- Opera
+
+Diğer Chromium tabanlı tarayıcılar da çalışabilir.
+
+## Bilinen Sınırlamalar
+
+YouTube ve YouTube Music sürekli güncellenen web uygulamalarıdır.
+
+Bu uzantı, oluşturulan arayüzleriyle etkileşimde bulunduğundan, YouTube tarafından yapılan büyük DOM değişiklikleri işlevselliği geçici olarak etkileyebilir.
+
+Uzantı, bu değişikliklerin etkisini azaltmak için kasıtlı olarak birden fazla seçici stratejisini destekler.
+
+## Geliştirme
+
+Uzantıda değişiklik yaptıktan sonra:
+
+1. Açın:
+
+```text
+chrome://extensions
+```
+
+2. Uzantıyı bulun.
+
+3. **Yeniden Yükle**'ye tıklayın.
+
+4. YouTube veya YouTube Music sayfasını yenileyin.
+
+DOM ile ilgili geliştirme için, her ikisini de test edin:
+
+```text
+youtube.com
+music.youtube.com
+```
+
+çünkü oynatma listesi oluşturucuları aynı değildir.
+
+## Katkıda Bulunma
+
+Hata raporları, seçici güncellemeleri, uyumluluk düzeltmeleri ve iyileştirmeler memnuniyetle karşılanır.
+
+YouTube oynatma listesi iletişim kutusu yapısını değiştirirse lütfen şunları ekleyin:
+
+- tarayıcı sürümü,
+- etkilenen web sitesi,
+- yeniden oluşturma adımları,
+- varsa ilgili DOM bilgileri.
+
+## Yasal Uyarı
+
+Bu proje bağımsız bir tarayıcı uzantısıdır ve YouTube veya Google ile bağlantılı değildir, onlar tarafından desteklenmemektedir veya sponsorluğunu üstlenmemektedir.
+
+YouTube ve YouTube Music, Google LLC'nin ticari markalarıdır.
 
 ## License
 
